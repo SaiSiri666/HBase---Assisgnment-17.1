@@ -1,0 +1,37 @@
+Problem Statement:
+
+1. What is NoSQL data base?
+
+-  NoSQL database, also called Not Only SQL, is an approach to data management and database design that's useful for very large sets of distributed data.  NoSQL is particularly useful for storing unstructured data, which is growing far more rapidly than structured data and does not fit the relational schemas of RDBMS.
+
+
+2. How does data get stored in NoSQl database?
+
+ - Data is stored in single tables as compared to joining multiple tables. There are various NoSQL Databases. Each one uses a different method to store data. Some might use column store, some document, some graph, etc., Each database has its own unique characteristics. 
+
+
+3. What is a column family in HBase?
+
+- A HBase table is comprised of one or more column families, each of which is stored in a separate set of regionfiles sharing a common key.Columns in  HBase are grouped into column families. All column members of a column family have the same prefix.
+
+4. How many maximum number of columns can be added to HBase table?
+
+- We can add millions of columns in column families and more than that as well but we need to limit the number of column families.
+
+
+5. Why columns are not defined at the time of table creation in HBase?
+
+- We will define only column families but not columns at the time of table creation as we deal with semi stuctured or unstructured data in HBase.
+
+6. How does data get managed in HBase?
+
+-  Data will get add to Hfile in mem store eventually and once the mem store is full the Hfiles will get flushed and stored and again new Hfile will be created. All latest updates are present in MEM Store. HBase supports CRUD operations i'e., Create, Retrieve, Update and Delete. Data will be managed by those operations.
+
+7. What happens internally when new data gets inserted into HBase table?
+
+-When the client issues a Put request, the first step is to write the data to the write-ahead
+log, the WAL:
+-Edits are appended to the end of the WAL file that is stored on disk.
+- The WAL is used to recover not-yet-persisted data in case a server crashes.
+- Once the data is written to the WAL, it is placed in the MemStore. Then, the put request
+acknowledgement returns to the client.
